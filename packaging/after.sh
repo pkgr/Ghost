@@ -1,18 +1,18 @@
 #!/bin/sh
 
-set -e
+set -ex
 
 # Compile assets. This requires the full development stack...
 export HOME=$(pwd)
 source .profile.d/nodejs.sh
-npm install
+npm install --silent
 git init
 git submodule update --init
 ./node_modules/.bin/grunt init
 ./node_modules/.bin/grunt prod
 
 # Install pg module
-npm install pg
+npm install pg --silent
 
 # Setup a proper config.js file, taking settings from environment variables.
 cat > config.js <<CONFIG

@@ -1,2 +1,1 @@
-after:
-  - 'HOME=$(pwd) && source .profile.d/nodejs.sh && npm install && git init && ./node_modules/.bin/grunt init && ./node_modules/.bin/grunt prod'
+after_precompile: ./packaging/after.sh

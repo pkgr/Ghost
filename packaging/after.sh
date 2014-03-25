@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Compile assets. This requires the full development stack...
-HOME=$(pwd)
+export HOME=$(pwd)
 source .profile.d/nodejs.sh
 npm install
 git init
@@ -32,7 +32,7 @@ config = {
             port     : pg_url.port,
             user     : pg_url.auth.split(":")[0],
             password : pg_url.auth.split(":")[1],
-            database : pg_url.pathname,
+            database : pg_url.pathname.replace(/^\//, ''),
             charset  : 'utf8'
         }
     },
@@ -43,4 +43,6 @@ config = {
     logging: false
   }
 }
+
+module.exports = config;
 CONFIG

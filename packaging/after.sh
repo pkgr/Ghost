@@ -1,10 +1,13 @@
 #!/bin/sh
 
+set -e
+
 # Compile assets. This requires the full development stack...
 export HOME=$(pwd)
 source .profile.d/nodejs.sh
 npm install
 git init
+git submodule update --init
 ./node_modules/.bin/grunt init
 ./node_modules/.bin/grunt prod
 
